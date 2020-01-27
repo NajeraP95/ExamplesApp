@@ -18,7 +18,6 @@ public class IntroActivity extends AppCompatActivity {
 
     private ViewPager screenPager;
     private IntroViewPagerAdapter introViewPagerAdapter;
-    private List<IntroScreenItem> pagesForIntroList = new ArrayList<>();
 
 
 
@@ -29,7 +28,10 @@ public class IntroActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        fillingPagesForIntroList();
+        List<IntroScreenItem> pagesForIntroList = new ArrayList<>();
+        pagesForIntroList.add(new IntroScreenItem("Hello", "LOL", R.drawable.intro_img1));
+        pagesForIntroList.add(new IntroScreenItem("Hi", ":)", R.drawable.intro_img2));
+        pagesForIntroList.add(new IntroScreenItem("Hao", "Jorge Najera", R.drawable.intro_img3));
 
         screenPager = findViewById(R.id.introViewPager);
         introViewPagerAdapter = new IntroViewPagerAdapter(this, pagesForIntroList);
@@ -44,10 +46,4 @@ public class IntroActivity extends AppCompatActivity {
             }
         });
     }
-
-    private void fillingPagesForIntroList(){
-        pagesForIntroList.add(new IntroScreenItem("", "", 1));
-        pagesForIntroList.add(new IntroScreenItem("", "", 1));
-    }
-
 }
