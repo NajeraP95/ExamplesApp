@@ -6,6 +6,11 @@ public class IntroScreenItem {
     int imgScreen;
 
 
+    public IntroScreenItem(String title, String description, int imgScreen) {
+        this.title = title;
+        this.description = description;
+        this.imgScreen = imgScreen;
+    }
 
     //Getter and setter for screen items
     public String getTitle() {
