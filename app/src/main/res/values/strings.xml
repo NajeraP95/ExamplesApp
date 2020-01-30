@@ -2,4 +2,6 @@
     <string name="app_name">ExamplesApp</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_intro">IntroActivity</string>
+
+    <string name="lorem_example">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ultrices tristique enim, non rhoncus est.</string>
 </resources>

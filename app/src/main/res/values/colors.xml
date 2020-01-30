@@ -5,8 +5,8 @@
     <color name="colorAccent">#FFFFFF</color>
 
     <!-- Colors for buttons styles -->
-    <color name="gradientStartColor">#4c84ff</color>
-    <color name="gradientEndColor">#18a3fe</color>
+    <color name="gradientStartColor">#FF4C4C</color>
+    <color name="gradientEndColor">#FE1818</color>
 
     <!-- Colors for tabs and screen text -->
     <color name="tabIndicatorColor">#c0c0c0</color>
