@@ -11,6 +11,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,7 @@ public class IntroActivity extends AppCompatActivity {
 
     //Declare variables
     private int position = 0;
+    private Animation animationFab;
 
 
 
@@ -43,6 +46,10 @@ public class IntroActivity extends AppCompatActivity {
         tabIndicator = findViewById(R.id.tabIndicator);
         nextFab = findViewById(R.id.intro_fab_next);
         getStartedFab = findViewById(R.id.intro_fab_getStarted);
+        animationFab = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.intro_button_animation);
+
+        //test
+        animationFab.setDuration(350);
 
         //fill list intros
         fillPagesForIntroList();
@@ -93,8 +100,7 @@ public class IntroActivity extends AppCompatActivity {
         nextFab.hide();
         tabIndicator.setVisibility(View.INVISIBLE);
         getStartedFab.show();
-
-        //TODO: add an animation to the getstarted fab
+        getStartedFab.setAnimation(animationFab);
 
     }
 
