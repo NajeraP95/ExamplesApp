@@ -1,5 +1,7 @@
 package com.najera.examplesapp;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -40,6 +42,12 @@ public class IntroActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        if (restorePrefsData()){
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
 
         //init views
         screenPager = findViewById(R.id.introViewPager);
@@ -63,21 +71,10 @@ public class IntroActivity extends AppCompatActivity {
 
 
         //onClick fab next
-        nextFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                screenPager.getCurrentItem();
+        nextFabClick();
 
-                if(position < pagesForIntroList.size()){
-                    position++;
-                    screenPager.setCurrentItem(position);
-                }
-
-                if (position == pagesForIntroList.size()-1){
-                    loadLastScreen();
-                }
-            }
-        });
+        //onClick fab getStarted
+        getStartedFabClick();
 
         //tabIndicator change listener
         tabIndicatorChangeListener();
@@ -125,5 +122,55 @@ public class IntroActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    //next fab click listener. change the page of the intro in every click until the pages end.
+    private void nextFabClick(){
+        nextFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                screenPager.getCurrentItem();
+
+                if(position < pagesForIntroList.size()){
+                    position++;
+                    screenPager.setCurrentItem(position);
+                }
+
+                if (position == pagesForIntroList.size()-1){
+                    loadLastScreen();
+                }
+            }
+        });
+    }
+
+    //getStarted fab click listener. change the activity to the main activity and save info.
+    private void getStartedFabClick(){
+        getStartedFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                savePrefsData();
+                finish();
+
+            }
+        });
+    }
+
+    private void savePrefsData(){
+
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences("data", MODE_PRIVATE);
+        SharedPreferences.Editor editData = preferences.edit();
+        editData.putBoolean("isIntroOpened", true);
+        editData.apply();
+
+    }
+
+    private boolean restorePrefsData(){
+
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences("data", MODE_PRIVATE);
+        return preferences.getBoolean("isIntroOpened", false);
+
     }
 }
