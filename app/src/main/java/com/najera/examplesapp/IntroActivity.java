@@ -3,18 +3,16 @@ package com.najera.examplesapp;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.tabs.TabLayout;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +30,6 @@ public class IntroActivity extends AppCompatActivity {
     private int position = 0;
     private Animation animationFab;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +42,6 @@ public class IntroActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
 
         //init views
         screenPager = findViewById(R.id.introViewPager);
@@ -69,7 +63,6 @@ public class IntroActivity extends AppCompatActivity {
         //setting up tabIndicator with viewPager
         tabIndicator.setupWithViewPager(screenPager);
 
-
         //onClick fab next
         nextFabClick();
 
@@ -83,6 +76,7 @@ public class IntroActivity extends AppCompatActivity {
 
     //Fill the intro list with the intros needed
     private void fillPagesForIntroList(){
+
         pagesForIntroList = new ArrayList<>();
 
         pagesForIntroList.add(new IntroScreenItem(":)", getString(R.string.lorem_example), R.drawable.intro_img1));
@@ -126,6 +120,7 @@ public class IntroActivity extends AppCompatActivity {
 
     //next fab click listener. change the page of the intro in every click until the pages end.
     private void nextFabClick(){
+
         nextFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

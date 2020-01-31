@@ -1,11 +1,27 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- day/light application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="background_color">@color/backgroundColor</item>
+        <item name="card_background_color">@color/cardBackgroundColor</item>
+        <item name="text_color">@color/textColor</item>
+        <item name="tint_color">@color/tintColor</item>
+        <item name="tab_indicator_color">@color/tabIndicatorColor</item>
+    </style>
+
+    <!-- night/dark application theme -->
+    <style name="DarkTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimaryNight</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkNight</item>
+        <item name="colorAccent">@color/colorAccentNight</item>
+        <item name="background_color">@color/backgroundColorNight</item>
+        <item name="card_background_color">@color/cardBackgroundColorNight</item>
+        <item name="text_color">@color/textColorNight</item>
+        <item name="tint_color">@color/tintColorNight</item>
+        <item name="tab_indicator_color">@color/tabIndicatorColorNight</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

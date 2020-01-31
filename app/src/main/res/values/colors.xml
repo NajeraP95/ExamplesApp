@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- General colors for day/light theme -->
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#FFFFFF</color>
-    <color name="colorAccent">#FFFFFF</color>
+    <color name="colorAccent">#2196f3</color>
+    <color name="backgroundColor">#FFFFFF</color>
+    <color name="cardBackgroundColor">#FFFFFF</color>
+    <color name="textColor">#000000</color>
+    <color name="tintColor">#2196f3</color>
+    <color name="tabIndicatorColor">#000000</color>
 
-    <!-- Colors for buttons styles -->
-    <color name="gradientStartColor">#FF4C4C</color>
-    <color name="gradientEndColor">#FE1818</color>
+    <!-- General colors for night/dark theme -->
+    <color name="colorPrimaryNight">#202020</color>
+    <color name="colorPrimaryDarkNight">#202020</color>
+    <color name="colorAccentNight">#2196f3</color>
+    <color name="backgroundColorNight">#303030</color>
+    <color name="cardBackgroundColorNight">#404040</color>
+    <color name="textColorNight">#ffffff</color>
+    <color name="tintColorNight">#2196f3</color>
+    <color name="tabIndicatorColorNight">#ffffff</color>
 
-    <!-- Colors for tabs and screen text -->
-    <color name="tabIndicatorColor">#c0c0c0</color>
-    <color name="introTitleColor">#000000</color>
-    <color name="introDescriptionColor">#656565</color>
 
 
 </resources>
