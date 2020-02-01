@@ -4,9 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
@@ -22,10 +19,14 @@ public class MainActivity extends AppCompatActivity {
 
     private Switch switchDarkMode;
     private Button showIntroButton;
+    private SharedPrefs prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+
+        prefs = new SharedPrefs(this);
+
+        if (prefs.loadNightModeState()){
             setTheme(R.style.DarkTheme);
         }
         else setTheme(R.style.AppTheme);
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         switchDarkMode = findViewById(R.id.switchNightMode);
         showIntroButton = findViewById(R.id.showIntroButton);
 
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+        if (prefs.loadNightModeState()){
             switchDarkMode.setChecked(true);
         }
 
@@ -52,11 +53,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    prefs.setNightModeState(true);
                     restartApp();
                 }
                 else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    prefs.setNightModeState(false);
                     restartApp();
                 }
             }
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         showIntroButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                savePrefsData();
+                saveIntroOpenedStatus();
                 Intent intent = new Intent(getApplicationContext(), IntroActivity.class);
                 startActivity(intent);
                 finish();
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    private void savePrefsData(){
+    private void saveIntroOpenedStatus(){
 
         SharedPreferences preferences = getApplicationContext().getSharedPreferences("data", MODE_PRIVATE);
         SharedPreferences.Editor editData = preferences.edit();
