@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".IntroActivity"
+    android:background="?attr/background_color"
     tools:showIn="@layout/activity_intro">
 
     <com.google.android.material.tabs.TabLayout
@@ -64,7 +65,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/buttonColor"
+        android:backgroundTint="?attr/tint_color"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
