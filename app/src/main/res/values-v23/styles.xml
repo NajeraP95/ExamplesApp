@@ -24,6 +24,8 @@
         <item name="text_color">@color/textColorNight</item>
         <item name="tint_color">@color/tintColorNight</item>
         <item name="tab_indicator_color">@color/tabIndicatorColorNight</item>
+        <item name="android:itemBackground">@color/colorPrimaryDarkNight</item>
+        <item name="android:textColor">@color/textColorNight</item>
         <item name="android:windowLightStatusBar">false</item>
     </style>
 
