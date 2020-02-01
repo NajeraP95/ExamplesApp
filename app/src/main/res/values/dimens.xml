@@ -4,4 +4,5 @@
     <dimen name="card_view_margin_sides">4dp</dimen>
     <dimen name="card_view_padding">4dp</dimen>
     <dimen name="card_view_switch_padding">8dp</dimen>
+    <dimen name="button_show_intro_main_activity_margin">8dp</dimen>
 </resources>

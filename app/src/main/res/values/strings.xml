@@ -6,6 +6,7 @@
 
     <string name="card_view_title">Night Mode</string>
     <string name="switch_dark_mode">Enable Night Mode</string>
+    <string name="button_test_intro">Show Intro</string>
 
     <string name="lorem_example">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ultrices tristique enim, non rhoncus est.</string>
 </resources>

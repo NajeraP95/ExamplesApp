@@ -1,6 +1,7 @@
 package com.najera.examplesapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -13,12 +14,14 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity {
 
     private Switch switchDarkMode;
+    private Button showIntroButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +36,18 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         switchDarkMode = findViewById(R.id.switchNightMode);
+        showIntroButton = findViewById(R.id.showIntroButton);
 
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
             switchDarkMode.setChecked(true);
         }
 
-        changeListener();
+        switchChangeListener();
+        buttonClickListener();
 
     }
 
-    public void changeListener(){
+    public void switchChangeListener(){
         switchDarkMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -58,10 +63,31 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void buttonClickListener(){
+        showIntroButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                savePrefsData();
+                Intent intent = new Intent(getApplicationContext(), IntroActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+
     public void restartApp(){
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    private void savePrefsData(){
+
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences("data", MODE_PRIVATE);
+        SharedPreferences.Editor editData = preferences.edit();
+        editData.putBoolean("isIntroOpened", false);
+        editData.apply();
+
     }
 
 

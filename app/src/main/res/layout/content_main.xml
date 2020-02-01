@@ -7,6 +7,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
     android:background="?attr/background_color"
+    android:orientation="vertical"
     tools:showIn="@layout/activity_main">
 
     <androidx.cardview.widget.CardView
@@ -44,5 +45,17 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/showIntroButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="?attr/tint_color"
+        android:text="@string/button_test_intro"
+        android:textColor="?attr/background_color"
+        android:layout_margin="@dimen/button_show_intro_main_activity_margin"
+        android:padding="@dimen/button_show_intro_main_activity_margin"
+        />
 
 </LinearLayout>
