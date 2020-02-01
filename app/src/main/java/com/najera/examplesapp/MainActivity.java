@@ -1,19 +1,16 @@
 package com.najera.examplesapp;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.widget.Toolbar;
-
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -68,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         showIntroButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveIntroOpenedStatus();
+                prefs.setIntroOpenedState(false);
                 Intent intent = new Intent(getApplicationContext(), IntroActivity.class);
                 startActivity(intent);
                 finish();
@@ -80,15 +77,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
         finish();
-    }
-
-    private void saveIntroOpenedStatus(){
-
-        SharedPreferences preferences = getApplicationContext().getSharedPreferences("data", MODE_PRIVATE);
-        SharedPreferences.Editor editData = preferences.edit();
-        editData.putBoolean("isIntroOpened", false);
-        editData.apply();
-
     }
 
 

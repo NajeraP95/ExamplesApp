@@ -3,16 +3,16 @@ package com.najera.examplesapp;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class SharedPrefs {
+class SharedPrefs {
 
-    SharedPreferences preferences;
+    private SharedPreferences preferences;
 
-    public SharedPrefs(Context context){
+    SharedPrefs(Context context){
         preferences = context.getSharedPreferences("data", Context.MODE_PRIVATE);
     }
 
     //Method to save the the Night/Dark mode state
-    public void setNightModeState(Boolean state){
+    void setNightModeState(Boolean state){
 
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("NightMode", state);
@@ -20,8 +20,24 @@ public class SharedPrefs {
 
     }
 
-    public boolean loadNightModeState(){
-        Boolean state = preferences.getBoolean("NightMode", false);
-        return state;
+    //Method to load the Night/Dark mode state
+    boolean loadNightModeState(){
+
+        return preferences.getBoolean("NightMode", false);
+
+    }
+
+    //test intro shared preferences
+    void setIntroOpenedState(Boolean state){
+
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("isIntroAlreadyOpen", state);
+        editor.apply();
+
+    }
+
+    boolean loadIntroOpenedState(){
+
+        return preferences.getBoolean("isIntroAlreadyOpen", false);
     }
 }

@@ -1,14 +1,12 @@
 package com.najera.examplesapp;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
@@ -30,10 +28,13 @@ public class IntroActivity extends AppCompatActivity {
     //Declare variables
     private int position = 0;
     private Animation animationFab;
+    private SharedPrefs prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+        prefs = new SharedPrefs(this);
+
+        if (prefs.loadNightModeState()){
             setTheme(R.style.DarkTheme);
         }
         else setTheme(R.style.AppTheme);
@@ -43,7 +44,7 @@ public class IntroActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        if (restorePrefsData()){
+        if (prefs.loadIntroOpenedState()){
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             finish();
@@ -152,26 +153,10 @@ public class IntroActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
-                savePrefsData();
+                prefs.setIntroOpenedState(true);
                 finish();
 
             }
         });
-    }
-
-    private void savePrefsData(){
-
-        SharedPreferences preferences = getApplicationContext().getSharedPreferences("data", MODE_PRIVATE);
-        SharedPreferences.Editor editData = preferences.edit();
-        editData.putBoolean("isIntroOpened", true);
-        editData.apply();
-
-    }
-
-    private boolean restorePrefsData(){
-
-        SharedPreferences preferences = getApplicationContext().getSharedPreferences("data", MODE_PRIVATE);
-        return preferences.getBoolean("isIntroOpened", false);
-
     }
 }
